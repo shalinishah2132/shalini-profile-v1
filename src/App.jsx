@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import profilePhoto from "./assets/shalini img.png";
 import './App.css';
 
 const projects = [
@@ -44,13 +45,14 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* HEADER */}
       <header className="header">
-        <div className="profile-photo">👩‍💻</div>
+       <div className="avatar">
+  <img src={profilePhoto} alt="Shalini" />
+</div>
         <h1 className="name">Shalini</h1>
         <p className="bio">
           IIT Ropar AI Minor.<br />
-          Built MiniGPT (175M GPT-2) from scratch.
+          Built MiniGPT
         </p>
       </header>
 
@@ -80,33 +82,37 @@ function App() {
         </div>
       </section>
 
-      {/* SKILLS */}
-      <section className="section">
-        <h2 className="section-title">Skills</h2>
-        
-        <input
-          type="text"
-          placeholder="Search skills (e.g., 'Python')..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
+<section className="section">
+  <div className="skills-header">
+    <h2 className="section-title">Skills</h2>
 
-        {filteredSkills.length > 0 ? (
-          <div className="skills-grid">
-            {filteredSkills.map((skill, index) => (
-              <div key={index} className="skill-item">
-                <span className="skill-icon">⚡</span>
-                <span className="skill-name">{skill}</span>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="no-results">
-            No skills found matching "<strong>{searchTerm}</strong>".
-          </p>
-        )}
-      </section>
+    <input
+      type="text"
+      placeholder="Search skills (e.g., 'Python')..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="search-input"
+    />
+  </div>
+
+  {filteredSkills.length > 0 ? (
+    <div className="skills-container">
+      {filteredSkills.map((skill, index) => (
+        <div key={index} className="skill-item">
+          <span className="skill-icon">⚡</span>
+          <span className="skill-name">{skill}</span>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p className="no-results">
+      No skills found matching "<strong>{searchTerm}</strong>".
+    </p>
+  )}
+
+</section>
+
+
     </div>
   );
 }
